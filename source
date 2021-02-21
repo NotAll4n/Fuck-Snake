@@ -108,7 +108,7 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
 	Duration = 5;
         })
     		game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Open GUI";
+        Title = "Open & Close";
         Text = "Key = RightCtrl";
 	Duration = 3;
         })
@@ -128,11 +128,16 @@ Container.Size = UDim2.new(0, 600, 0, 400)
 Container.Active = true
 Container.Draggable = true
 local usi = game:GetService("UserInputService")
+local toggle = true
 
 usi.InputBegan:Connect(function(io, p)
 	if io.KeyCode == Enum.KeyCode.RightControl then
+	    if toggle == false
+	    then toggle = true
 		Container.Visible = true
-
+		else toggle = false 
+		    Container.Visible = false
+end
 	end
 end)
 
