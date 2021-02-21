@@ -307,6 +307,12 @@ Close.Size = UDim2.new(0, 70, 0, 57)
 Close.Image = "rbxassetid://4988112250"
 Close.MouseButton1Down:connect(function()
 	Container.Visible = false
+	MainCategory.Visible = false
+	PersonalCategory.Visible = false
+	TeleportCategory.Visible = false
+	VisionCategory.Visible = false
+	SenzuCategory.Visible = false
+	SupportCategory.Visible = false
 end)
 
 Categories.Name = "Categories"
