@@ -746,35 +746,35 @@ TOPRevive.Text = "TOP Revive"
 TOPRevive.TextColor3 = Color3.fromRGB(255, 255, 255)
 TOPRevive.TextSize = 14.000
 TOPRevive.MouseButton1Down:connect(function()
-	--(TOP_Revive)--
-	--(By: All4n)--
+--(TOP_Revive)--
+--(By: All4n)--
 
 
-	game:GetService("StarterGui"):SetCore("SendNotification", {
-		Title = "TOP Revive";
-		Text = "How to use:";
-	})
+game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "TOP Revive";
+        Text = "How to use:";
+        })
 
-	game:GetService("StarterGui"):SetCore("SendNotification", {
-		Title = "Keybinding";
-		Text = "P to revive self. O to teleport out.";
-	})
+game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Keybinding";
+        Text = "O to revive self. P to teleport out.";
+        })
 
-	local lplr = game:GetService("Players").LocalPlayer
-	local mouse = lplr:GetMouse()
+local lplr = game:GetService("Players").LocalPlayer
+local mouse = lplr:GetMouse()
 
-	mouse.KeyDown:connect(function(key)
-		if key == "O" then
-			game:GetService("TweenService"):Create(lplr.Character.HumanoidRootPart, TweenInfo.new(0.3, Enum.EasingStyle.Linear), {CFrame = CFrame.new(100, 100, 100)}):Play()
-		end
-	end)
+mouse.KeyDown:connect(function(key)
+    if key == "p" then
+        game:GetService("TweenService"):Create(lplr.Character.HumanoidRootPart, TweenInfo.new(0.3, Enum.EasingStyle.Linear), {CFrame = CFrame.new(100, 100, 100)}):Play()
+    end
+    end)
 
-	mouse.KeyDown:connect(function(key)
-		if key == "P" then
-			local action = lplr.Character.SuperAction
-			action:Destroy()
-		end
-	end)
+mouse.KeyDown:connect(function(key)
+    if key == "o" then
+        local action = lplr.Character.SuperAction
+        action:Destroy()
+    end
+    end)
 end)
 
 LockOn.Name = "LockOn"
