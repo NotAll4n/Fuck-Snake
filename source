@@ -1,9 +1,3 @@
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
-
 if not game:IsLoaded() then
 	local loadedcheck = Instance.new("Message",workspace)
 	loadedcheck.Text = 'Loading...'
@@ -44,6 +38,8 @@ local UIGridLayout_2 = Instance.new("UIGridLayout")
 local Rejoin = Instance.new("TextButton")
 local SlotChanger = Instance.new("TextButton")
 local HardReset = Instance.new("TextButton")
+local PlayerKillBroly = Instance.new("TextButton")
+local AutoFarmEarth = Instance.new("TextButton")
 local TeleportCategory = Instance.new("ScrollingFrame")
 local UIGridLayout_3 = Instance.new("UIGridLayout")
 local UIPadding_3 = Instance.new("UIPadding")
@@ -59,6 +55,10 @@ local SouthCity = Instance.new("TextButton")
 local WestCity = Instance.new("TextButton")
 local CentralCity = Instance.new("TextButton")
 local GokusHouse = Instance.new("TextButton")
+local BrolyPadEarth = Instance.new("TextButton")
+local TOPPadEarth = Instance.new("TextButton")
+local BrolyPadQueue = Instance.new("TextButton")
+local TOPPadQueue = Instance.new("TextButton")
 local PersonalCategory = Instance.new("ScrollingFrame")
 local UIGridLayout_4 = Instance.new("UIGridLayout")
 local UIPadding_4 = Instance.new("UIPadding")
@@ -71,6 +71,9 @@ local AndroidCharge = Instance.new("TextButton")
 local RemoveClothes = Instance.new("TextButton")
 local RemoveFace = Instance.new("TextButton")
 local RemoveAura = Instance.new("TextButton")
+local RegenCharge = Instance.new("TextButton")
+local DragonThrowGlitch = Instance.new("TextButton")
+local DragonCrushGlitch = Instance.new("TextButton")
 local VisionCategory = Instance.new("ScrollingFrame")
 local UIGridLayout_5 = Instance.new("UIGridLayout")
 local UIPadding_5 = Instance.new("UIPadding")
@@ -101,20 +104,21 @@ local Lts_Iaw = Instance.new("TextLabel")
 local EnjoiUrLunch = Instance.new("TextLabel")
 local LoveTheseGuys = Instance.new("TextLabel")
 
---Properties:
 game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Made By";
         Text = "NotAll4n";
 	Duration = 5;
         })
     		game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Open & Close";
+        Title = "Open GUI";
         Text = "Key = RightCtrl";
 	Duration = 3;
         })
+local lplr = game.Players.LocalPlayer
+lplr.PlayerGui:WaitForChild("HUD").Bottom.Stats.Race.Val.Text = "All4n" 
+wait()
 
 ScreenGui.Parent = game.CoreGui
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.ResetOnSpawn = false
 
 Container.Name = "Container"
@@ -132,12 +136,11 @@ local toggle = true
 
 usi.InputBegan:Connect(function(io, p)
 	if io.KeyCode == Enum.KeyCode.RightControl then
-	    if toggle == false
-	    then toggle = true
-		Container.Visible = true
+		if toggle == false
+		then toggle = true
+			Container.Visible = true
 		else toggle = false 
-		    Container.Visible = false
-end
+		end
 	end
 end)
 
@@ -299,7 +302,7 @@ FuckSnake.BorderSizePixel = 0
 FuckSnake.Position = UDim2.new(0.331666648, 0, 0, 0)
 FuckSnake.Size = UDim2.new(0, 200, 0, 57)
 FuckSnake.Font = Enum.Font.Cartoon
-FuckSnake.Text = "F*ck Snake"
+FuckSnake.Text = "Fuck Snake"
 FuckSnake.TextColor3 = Color3.fromRGB(255, 255, 255)
 FuckSnake.TextSize = 20.000
 
@@ -344,7 +347,7 @@ RainbowGod.BorderSizePixel = 0
 RainbowGod.Position = UDim2.new(0.777999997, 0, 0.671052635, 0)
 RainbowGod.Size = UDim2.new(0, 150, 0, 30)
 RainbowGod.Font = Enum.Font.Code
-RainbowGod.Text = "RainbowGod"
+RainbowGod.Text = "RainbowGod [Earth]"
 RainbowGod.TextColor3 = Color3.fromRGB(255, 255, 255)
 RainbowGod.TextSize = 14.000
 RainbowGod.MouseButton1Down:connect(function()
@@ -746,36 +749,43 @@ TOPRevive.Text = "TOP Revive"
 TOPRevive.TextColor3 = Color3.fromRGB(255, 255, 255)
 TOPRevive.TextSize = 14.000
 TOPRevive.MouseButton1Down:connect(function()
---(TOP_Revive)--
---(By: All4n)--
-
-
+if not game:IsLoaded() then
+	game.Loaded:Wait()
+end
+wait(1)
 game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "TOP Revive";
-        Text = "How to use:";
-        })
-
-game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Keybinding";
-        Text = "O to revive self. P to teleport out.";
-        })
-
+	Title = "Top Respawn";
+	Text = "Press ; To Use";
+})
 local lplr = game:GetService("Players").LocalPlayer
 local mouse = lplr:GetMouse()
 
 mouse.KeyDown:connect(function(key)
-    if key == "p" then
-        game:GetService("TweenService"):Create(lplr.Character.HumanoidRootPart, TweenInfo.new(0.3, Enum.EasingStyle.Linear), {CFrame = CFrame.new(100, 100, 100)}):Play()
-    end
-    end)
-
-mouse.KeyDown:connect(function(key)
-    if key == "o" then
-        local action = lplr.Character.SuperAction
-        action:Destroy()
-    end
-    end)
+	if key == ";" then
+		local action = lplr.Character.SuperAction
+		action:Destroy()
+		wait(0.3)
+		game:GetService("TweenService"):Create(lplr.Character.HumanoidRootPart, TweenInfo.new(0.3, Enum.EasingStyle.Linear), {CFrame = CFrame.new(100, 100, 100)}):Play()
+	end
 end)
+
+while wait() do
+	for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+		if v.Name == "Justice Combination" then
+			local action = game.Players.LocalPlayer.Character:WaitForChild("Action")
+			if action then wait() action:Destroy() end end
+		if v.Name == "Attacking" then
+			v:Destroy()
+		end
+		if v.Name == "Action" then
+			v:Destroy()
+		end
+		if v.Name == "Killed" then
+			v:Destroy()
+		end
+	end
+	end
+	end)
 
 LockOn.Name = "LockOn"
 LockOn.Parent = MainCategory
@@ -788,6 +798,11 @@ LockOn.Text = "LockOn"
 LockOn.TextColor3 = Color3.fromRGB(255, 255, 255)
 LockOn.TextSize = 14.000
 LockOn.MouseButton1Down:connect(function()
+	game:GetService("StarterGui"):SetCore("SendNotification", {
+		Title = "Directions";
+		Text = "O Team Switch, P Toggle";
+		Duration = 5;
+	})
 	local plrs = game:GetService("Players")
 	local TeamBased = true ; local teambasedswitch = "o"
 	local presskeytoaim = true; local aimkey = "p"
@@ -1082,7 +1097,7 @@ GodMode.BorderSizePixel = 0
 GodMode.Position = UDim2.new(0.779999971, 0, 0.671052635, 0)
 GodMode.Size = UDim2.new(0, 150, 0, 30)
 GodMode.Font = Enum.Font.Code
-GodMode.Text = "GodMode"
+GodMode.Text = "GodMode [Earth]"
 GodMode.TextColor3 = Color3.fromRGB(255, 255, 255)
 GodMode.TextSize = 14.000
 GodMode.MouseButton1Down:connect(function()
@@ -1103,7 +1118,7 @@ RemoveShield.BorderSizePixel = 0
 RemoveShield.Position = UDim2.new(0.779999971, 0, 0.671052635, 0)
 RemoveShield.Size = UDim2.new(0, 150, 0, 30)
 RemoveShield.Font = Enum.Font.Code
-RemoveShield.Text = "Remove Shield"
+RemoveShield.Text = "Remove Shield [Heaven]"
 RemoveShield.TextColor3 = Color3.fromRGB(255, 255, 255)
 RemoveShield.TextSize = 14.000
 RemoveShield.MouseButton1Down:connect(function()
@@ -1289,6 +1304,35 @@ HardReset.TextColor3 = Color3.fromRGB(255, 255, 255)
 HardReset.TextSize = 14.000
 HardReset.MouseButton1Down:connect(function()
 	game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end)
+
+PlayerKillBroly.Name = "Player Kill [Broly]"
+PlayerKillBroly.Parent = MainCategory
+PlayerKillBroly.BackgroundColor3 = Color3.fromRGB(74, 74, 74)
+PlayerKillBroly.BorderSizePixel = 0
+PlayerKillBroly.Position = UDim2.new(0.777999997, 0, 0.671052635, 0)
+PlayerKillBroly.Size = UDim2.new(0, 150, 0, 30)
+PlayerKillBroly.Font = Enum.Font.Code
+PlayerKillBroly.Text = "Player Kill [Broly]"
+PlayerKillBroly.TextColor3 = Color3.fromRGB(255, 255, 255)
+PlayerKillBroly.TextSize = 14.000
+PlayerKillBroly.MouseButton1Down:connect(function()
+	local plr = game.Players.LocalPlayer
+	game.Workspace.Live[plr.Name]["team damage"]:Destroy()
+end)
+
+AutoFarmEarth.Name = "Auto Farm [Earth]"
+AutoFarmEarth.Parent = MainCategory
+AutoFarmEarth.BackgroundColor3 = Color3.fromRGB(74, 74, 74)
+AutoFarmEarth.BorderSizePixel = 0
+AutoFarmEarth.Position = UDim2.new(0.777999997, 0, 0.671052635, 0)
+AutoFarmEarth.Size = UDim2.new(0, 150, 0, 30)
+AutoFarmEarth.Font = Enum.Font.Code
+AutoFarmEarth.Text = "Auto Farm [Earth]"
+AutoFarmEarth.TextColor3 = Color3.fromRGB(255, 255, 255)
+	AutoFarmEarth.TextSize = 14.000
+AutoFarmEarth.MouseButton1Down:connect(function()
+	loadstring(game:HttpGet(("https://aizen.ml/uploads/dbzfs.lua")))()
 end)
 
 TeleportCategory.Name = "Teleport Category"
@@ -1484,6 +1528,80 @@ GokusHouse.MouseButton1Down:connect(function()
 	wait(0)
 end)
 
+BrolyPadEarth.Name = "Broly Pad [Earth]"
+BrolyPadEarth.Parent = TeleportCategory
+BrolyPadEarth.BackgroundColor3 = Color3.fromRGB(74, 74, 74)
+BrolyPadEarth.BorderSizePixel = 0
+BrolyPadEarth.Position = UDim2.new(0.779999971, 0, 0.671052635, 0)
+BrolyPadEarth.Size = UDim2.new(0, 150, 0, 30)
+BrolyPadEarth.Font = Enum.Font.Code
+BrolyPadEarth.Text = "Broly Pad [Earth]"
+BrolyPadEarth.TextColor3 = Color3.fromRGB(255, 255, 255)
+BrolyPadEarth.TextSize = 14.000
+BrolyPadEarth.MouseButton1Down:connect(function()
+game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2.0),{CFrame = CFrame.new(2752.48853, 3944.8596, -2271.05688, 0.0123581998, 0, 0.999923587, -0, 1, -0, -0.999923706, 0, 0.0123581979)}):Play()
+wait(0)
+end)
+
+TOPPadEarth.Name = "TOP Pad [Earth]"
+TOPPadEarth.Parent = TeleportCategory
+TOPPadEarth.BackgroundColor3 = Color3.fromRGB(74, 74, 74)
+TOPPadEarth.BorderSizePixel = 0
+TOPPadEarth.Position = UDim2.new(0.779999971, 0, 0.671052635, 0)
+TOPPadEarth.Size = UDim2.new(0, 150, 0, 30)
+TOPPadEarth.Font = Enum.Font.Code
+TOPPadEarth.Text = "TOP Pad [Earth]"
+TOPPadEarth.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TOPPadEarth.TextSize = 14.000
+	TOPPadEarth.MouseButton1Down:connect(function()
+		game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2.0),{CFrame = CFrame.new(2512.20386, 3945.60547, -2011.30945, 0.999980152, 0, -0.0063026608, -0, 1, -0, 0.0063026608, 0, 0.999980152)}):Play()
+		wait(0)
+	end)
+
+BrolyPadQueue.Name = "Broly Pad [Queue]"
+BrolyPadQueue.Parent = TeleportCategory
+BrolyPadQueue.BackgroundColor3 = Color3.fromRGB(74, 74, 74)
+BrolyPadQueue.BorderSizePixel = 0
+BrolyPadQueue.Position = UDim2.new(0.779999971, 0, 0.671052635, 0)
+BrolyPadQueue.Size = UDim2.new(0, 150, 0, 30)
+BrolyPadQueue.Font = Enum.Font.Code
+BrolyPadQueue.Text = "Broly Pad [Queue]"
+BrolyPadQueue.TextColor3 = Color3.fromRGB(255, 255, 255)
+BrolyPadQueue.TextSize = 14.000
+BrolyPadQueue.MouseButton1Down:connect(function()
+		local pad = math.random(1,7)
+		if pad == 1 then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-26.1189117, 238.054794, -147.576416)
+		elseif pad == 2 then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-24.060957, 238.054794, -291.920319)
+		elseif pad == 3 then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-26.8643761, 238.054794, -423.684021)
+		elseif pad == 4 then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-27.0333195, 238.054794, -591.398315)
+		elseif pad == 5 then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-25.6867237, 238.054794, -731.384155)
+		elseif pad == 6 then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-29.5732059, 238.054794, -883.950989)
+		elseif pad == 7 then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-28.3717651, 238.054794, -1049.88049)
+		end
+	end)
+
+TOPPadQueue.Name = "TOP Pad [Queue]"
+TOPPadQueue.Parent = TeleportCategory
+TOPPadQueue.BackgroundColor3 = Color3.fromRGB(74, 74, 74)
+TOPPadQueue.BorderSizePixel = 0
+TOPPadQueue.Position = UDim2.new(0.779999971, 0, 0.671052635, 0)
+TOPPadQueue.Size = UDim2.new(0, 150, 0, 30)
+TOPPadQueue.Font = Enum.Font.Code
+TOPPadQueue.Text = "TOP Pad [Queue]"
+TOPPadQueue.TextColor3 = Color3.fromRGB(255, 255, 255)
+TOPPadQueue.TextSize = 14.000
+TOPPadQueue.MouseButton1Down:connect(function()
+		game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2.0),{CFrame = CFrame.new(-64.5987778, 238, 385.578552, -0.999914587, 0, 0.0130719058, 0, 1, -0, -0.0130719058, 0, -0.999914587)}):Play()
+		wait(0)
+	end)
+
 PersonalCategory.Name = "Personal Category"
 PersonalCategory.Parent = Categories
 PersonalCategory.Active = true
@@ -1513,18 +1631,18 @@ RemoveLevel.Size = UDim2.new(0, 150, 0, 30)
 RemoveLevel.Font = Enum.Font.Code
 RemoveLevel.Text = "Remove Level"
 RemoveLevel.TextColor3 = Color3.fromRGB(255, 255, 255)
-RemoveLevel.TextSize = 14.000
-RemoveLevel.MouseButton1Down:connect(function()
-	game:service'RunService'.RenderStepped:connect(function()
-		pcall(function()
-			for i,v in next, game:service'Players'.LocalPlayer.Character:children() do
-				if (string.find(tostring(v.Name):lower(), 'lvl.')) then 
-					v:Destroy()
+	RemoveLevel.TextSize = 14.000
+	RemoveLevel.MouseButton1Down:connect(function()
+		game:service'RunService'.RenderStepped:connect(function()
+			pcall(function()
+				for i,v in next, game:service'Players'.LocalPlayer.Character:children() do
+					if (string.find(tostring(v.Name):lower(), 'lvl.')) then 
+						v:Destroy()
+					end
 				end
-			end
+			end)
 		end)
 	end)
-end)
 
 HideWingsHalo.Name = "Hide Wings & Halo"
 HideWingsHalo.Parent = PersonalCategory
@@ -1535,14 +1653,14 @@ HideWingsHalo.Size = UDim2.new(0, 150, 0, 30)
 HideWingsHalo.Font = Enum.Font.Code
 HideWingsHalo.Text = "Hide Wings/Halo"
 HideWingsHalo.TextColor3 = Color3.fromRGB(255, 255, 255)
-HideWingsHalo.TextSize = 14.000
-HideWingsHalo.MouseButton1Down:connect(function()
-	if game.Players.LocalPlayer.Character:FindFirstChild("RebirthWings") then
-		game.Players.LocalPlayer.Character.RebirthWings:Destroy()
-	elseif game.Players.LocalPlayer.Character:FindFirstChild("RealHalo") then
-		game.Players.LocalPlayer.Character.RealHalo:Destroy()
-	end
-end)
+	HideWingsHalo.TextSize = 14.000
+	HideWingsHalo.MouseButton1Down:connect(function()
+		if game.Players.LocalPlayer.Character:FindFirstChild("RebirthWings") then
+			game.Players.LocalPlayer.Character.RebirthWings:Destroy()
+		elseif game.Players.LocalPlayer.Character:FindFirstChild("RealHalo") then
+			game.Players.LocalPlayer.Character.RealHalo:Destroy()
+		end
+	end)
 
 RainbowWingsHalo.Name = "Rainbow Wings & Halo"
 RainbowWingsHalo.Parent = PersonalCategory
@@ -1553,28 +1671,28 @@ RainbowWingsHalo.Size = UDim2.new(0, 150, 0, 30)
 RainbowWingsHalo.Font = Enum.Font.Code
 RainbowWingsHalo.Text = "Rainbow Wings/Halo"
 RainbowWingsHalo.TextColor3 = Color3.fromRGB(255, 255, 255)
-RainbowWingsHalo.TextSize = 14.000
-RainbowWingsHalo.MouseButton1Down:connect(function()
-	local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
+	RainbowWingsHalo.TextSize = 14.000
+	RainbowWingsHalo.MouseButton1Down:connect(function()
+		local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
 
-	local w = library:CreateWindow("Main") -- Creates the window
+		local w = library:CreateWindow("Main") -- Creates the window
 
-	local b = w:CreateFolder("Color") -- Creates the folder(U will put here your buttons,etc)
+		local b = w:CreateFolder("Color") -- Creates the folder(U will put here your buttons,etc)
 
-	b:Label("RebirthWing/Halo Color",{
-		TextSize = 25; -- Self Explaining
-		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
-		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+		b:Label("RebirthWing/Halo Color",{
+			TextSize = 25; -- Self Explaining
+			TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+			BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
 
-	}) 
-	b:ColorPicker("ColorPicker",Color3.fromRGB(255,0,0),function(color) --Default color
-		if game.Players.LocalPlayer.Character:FindFirstChild("RebirthWings") then
-			game.Players.LocalPlayer.Character.RebirthWings.Handle.Color = (color)
-		elseif game.Players.LocalPlayer.Character:FindFirstChild("RealHalo") then
-			game.Players.LocalPlayer.Character.RealHalo.Handle.Color = (color)
-		end
+		}) 
+		b:ColorPicker("ColorPicker",Color3.fromRGB(255,0,0),function(color) --Default color
+			if game.Players.LocalPlayer.Character:FindFirstChild("RebirthWings") then
+				game.Players.LocalPlayer.Character.RebirthWings.Handle.Color = (color)
+			elseif game.Players.LocalPlayer.Character:FindFirstChild("RealHalo") then
+				game.Players.LocalPlayer.Character.RealHalo.Handle.Color = (color)
+			end
+		end)
 	end)
-end)
 
 Vanish.Name = "Vanish"
 Vanish.Parent = PersonalCategory
@@ -1585,12 +1703,12 @@ Vanish.Size = UDim2.new(0, 150, 0, 30)
 Vanish.Font = Enum.Font.Code
 Vanish.Text = "Vanish"
 Vanish.TextColor3 = Color3.fromRGB(255, 255, 255)
-Vanish.TextSize = 14.000
-Vanish.MouseButton1Down:connect(function()
-	while wait() do
-		game.Players.LocalPlayer.Backpack.ServerTraits.Vanish:FireServer()
-	end
-end)
+	Vanish.TextSize = 14.000
+	Vanish.MouseButton1Down:connect(function()
+		while wait() do
+			game.Players.LocalPlayer.Backpack.ServerTraits.Vanish:FireServer()
+		end
+	end)
 
 DustCloud.Name = "Dust Cloud"
 DustCloud.Parent = PersonalCategory
@@ -1601,15 +1719,15 @@ DustCloud.Size = UDim2.new(0, 150, 0, 30)
 DustCloud.Font = Enum.Font.Code
 DustCloud.Text = "Dust Cloud"
 DustCloud.TextColor3 = Color3.fromRGB(255, 255, 255)
-DustCloud.TextSize = 14.000
-DustCloud.MouseButton1Down:connect(function()
-	Dusty = game:GetService("RunService").RenderStepped:connect(function()
-		local A_1 = "average"
-		local A_2 = CFrame.new(-696.695679, 291.290009, -5554.28467, 0.359417617, 0.41572988, -0.83545661, -0, 0.895282269, 0.445499539, 0.933176875, -0.160120383, 0.321780175)
-		local Event = game.Players.LocalPlayer.Backpack.ServerTraits.Vanish
-		Event:FireServer(A_1, A_2)
+	DustCloud.TextSize = 14.000
+	DustCloud.MouseButton1Down:connect(function()
+		Dusty = game:GetService("RunService").RenderStepped:connect(function()
+			local A_1 = "average"
+			local A_2 = CFrame.new(-696.695679, 291.290009, -5554.28467, 0.359417617, 0.41572988, -0.83545661, -0, 0.895282269, 0.445499539, 0.933176875, -0.160120383, 0.321780175)
+			local Event = game.Players.LocalPlayer.Backpack.ServerTraits.Vanish
+			Event:FireServer(A_1, A_2)
+		end)
 	end)
-end)
 
 AndroidCharge.Name = "Android Charge"
 AndroidCharge.Parent = PersonalCategory
@@ -1620,28 +1738,28 @@ AndroidCharge.Size = UDim2.new(0, 150, 0, 30)
 AndroidCharge.Font = Enum.Font.Code
 AndroidCharge.Text = "Android Charge"
 AndroidCharge.TextColor3 = Color3.fromRGB(255, 255, 255)
-AndroidCharge.TextSize = 14.000
-AndroidCharge.MouseButton1Down:connect(function()
-	local player = game.Players.LocalPlayer
-	local mouse = player:GetMouse()
-	local Animate 
-	local Humanoid = player.Character:FindFirstChild('Humanoid')
+	AndroidCharge.TextSize = 14.000
+	AndroidCharge.MouseButton1Down:connect(function()
+		local player = game.Players.LocalPlayer
+		local mouse = player:GetMouse()
+		local Animate 
+		local Humanoid = player.Character:FindFirstChild('Humanoid')
 
-	mouse.KeyDown:Connect(function(Key) 
-		if Key == "x" then
-			local Animation = Instance.new("Animation", player.Character)
-			Animation.AnimationId = "rbxassetid://1587748889"
-			Animate = Humanoid:LoadAnimation(Animation)
-			Animate:Play()
-		end
-	end)
+		mouse.KeyDown:Connect(function(Key) 
+			if Key == "x" then
+				local Animation = Instance.new("Animation", player.Character)
+				Animation.AnimationId = "rbxassetid://1587748889"
+				Animate = Humanoid:LoadAnimation(Animation)
+				Animate:Play()
+			end
+		end)
 
-	mouse.KeyUp:Connect(function(Key)
-		if Key == "x" then
-			Animate:Stop()
-		end
+		mouse.KeyUp:Connect(function(Key)
+			if Key == "x" then
+				Animate:Stop()
+			end
+		end)
 	end)
-end)
 
 RemoveClothes.Name = "Remove Clothes"
 RemoveClothes.Parent = PersonalCategory
@@ -1652,19 +1770,19 @@ RemoveClothes.Size = UDim2.new(0, 150, 0, 30)
 RemoveClothes.Font = Enum.Font.Code
 RemoveClothes.Text = "Remove Clothes"
 RemoveClothes.TextColor3 = Color3.fromRGB(255, 255, 255)
-RemoveClothes.TextSize = 14.000
-RemoveClothes.MouseButton1Down:connect(function()
-	local pchar = game:GetService("Players").LocalPlayer.Character -- This bypasses all Anti exploits so do not worry .
-	if pchar:FindFirstChild("Shirt") then
-		pchar.Shirt:Remove()
-	end
-	if pchar:FindFirstChild("Pants") then
-		pchar.Pants:Remove()
-	end
-	if pchar:FindFirstChild("Shirt Graphic") then
-		pchar["Shirt Graphic"].Graphic = ""
-	end
-end)
+	RemoveClothes.TextSize = 14.000
+	RemoveClothes.MouseButton1Down:connect(function()
+		local pchar = game:GetService("Players").LocalPlayer.Character -- This bypasses all Anti exploits so do not worry .
+		if pchar:FindFirstChild("Shirt") then
+			pchar.Shirt:Remove()
+		end
+		if pchar:FindFirstChild("Pants") then
+			pchar.Pants:Remove()
+		end
+		if pchar:FindFirstChild("Shirt Graphic") then
+			pchar["Shirt Graphic"].Graphic = ""
+		end
+	end)
 
 RemoveFace.Name = "Remove Face"
 RemoveFace.Parent = PersonalCategory
@@ -1676,9 +1794,9 @@ RemoveFace.Font = Enum.Font.Code
 RemoveFace.Text = "Remove Face"
 RemoveFace.TextColor3 = Color3.fromRGB(255, 255, 255)
 	RemoveFace.TextSize = 14.000
-RemoveFace.MouseButton1Down:connect(function()
-game.Players.LocalPlayer.Character.Head.face:Destroy()
-end)
+	RemoveFace.MouseButton1Down:connect(function()
+		game.Players.LocalPlayer.Character.Head.face:Destroy()
+	end)
 
 RemoveAura.Name = "Remove Aura"
 RemoveAura.Parent = PersonalCategory
@@ -1689,14 +1807,129 @@ RemoveAura.Size = UDim2.new(0, 150, 0, 30)
 RemoveAura.Font = Enum.Font.Code
 RemoveAura.Text = "Remove Aura"
 RemoveAura.TextColor3 = Color3.fromRGB(255, 255, 255)
-		RemoveAura.TextSize = 14.000
-RemoveAura.MouseButton1Down:connect(function()
-	local plr = game.Players.LocalPlayer
-	game.Workspace.Live[plr.Name].HumanoidRootPart["TempAura"]:Destroy()
-	wait()
-	local plr = game.Players.LocalPlayer
-	game.Workspace.Live[plr.Name].HumanoidRootPart["Lightning"]:Destroy()
-end)
+	RemoveAura.TextSize = 14.000
+	RemoveAura.MouseButton1Down:connect(function()
+		local plr = game.Players.LocalPlayer
+		game.Workspace.Live[plr.Name].HumanoidRootPart["TempAura"]:Destroy()
+		wait()
+		local plr = game.Players.LocalPlayer
+		game.Workspace.Live[plr.Name].HumanoidRootPart["Lightning"]:Destroy()
+	end)
+
+RegenCharge.Name = "Regen Charge"
+RegenCharge.Parent = PersonalCategory
+RegenCharge.BackgroundColor3 = Color3.fromRGB(74, 74, 74)
+RegenCharge.BorderSizePixel = 0
+RegenCharge.Position = UDim2.new(0.779999971, 0, 0.671052635, 0)
+RegenCharge.Size = UDim2.new(0, 150, 0, 30)
+RegenCharge.Font = Enum.Font.Code
+RegenCharge.Text = "Regen Charge"
+RegenCharge.TextColor3 = Color3.fromRGB(255, 255, 255)
+	RegenCharge.TextSize = 14.000
+	RegenCharge.MouseButton1Down:connect(function()
+		if not game:IsLoaded() then
+			local loadedcheck = Instance.new("Message",workspace)
+			loadedcheck.Text = 'Loading...'
+			game.Loaded:Wait()
+			loadedcheck:Destroy()
+		end
+		wait(1)
+		local player = game.Players.LocalPlayer
+		local mouse = player:GetMouse()
+		local Animate 
+		local Humanoid = player.Character:FindFirstChild('Humanoid')
+
+		mouse.KeyDown:Connect(function(Key) 
+			if Key == "x" then
+				local Animation = Instance.new("Animation", player.Character)
+				Animation.AnimationId = "rbxassetid://991819213"
+				Animate = Humanoid:LoadAnimation(Animation)
+				Animate:Play()
+			end
+		end)
+		mouse.KeyDown:Connect(function(Key) 
+			if Key == "x" then
+				local Animation = Instance.new("Animation", player.Character)
+				Animation.AnimationId = "rbxassetid://989279906"
+				Animate = Humanoid:LoadAnimation(Animation)
+				Animate:Play()
+			end
+		end)
+
+		mouse.KeyUp:Connect(function(Key)
+			if Key == "x" then
+				Animate:Stop()
+			end
+		end)
+		game:GetService("StarterGui"):SetCore("SendNotification", {
+			Title = "Made By:";
+			Text = "All4n";
+		})
+		game:GetService("StarterGui"):SetCore("SendNotification", {
+			Title = "Instructions";
+			Text = "Hold X";
+		})
+	end)
+
+DragonThrowGlitch.Name = "Dragon Throw Glitch"
+DragonThrowGlitch.Parent = PersonalCategory
+DragonThrowGlitch.BackgroundColor3 = Color3.fromRGB(74, 74, 74)
+DragonThrowGlitch.BorderSizePixel = 0
+DragonThrowGlitch.Position = UDim2.new(0.779999971, 0, 0.671052635, 0)
+DragonThrowGlitch.Size = UDim2.new(0, 150, 0, 30)
+DragonThrowGlitch.Font = Enum.Font.Code
+DragonThrowGlitch.Text = "Dragon Throw Glitch"
+DragonThrowGlitch.TextColor3 = Color3.fromRGB(255, 255, 255)
+		DragonThrowGlitch.TextSize = 14.000
+	DragonThrowGlitch.MouseButton1Down:connect(function()
+		while wait() do
+			local action = game.Players.LocalPlayer.Character["Dragon Throw"].Activator:WaitForChild("Throw")
+			if action then action:Destroy()
+			end
+		end
+	end)
+
+DragonCrushGlitch.Name = "Dragon Crush Glitch"
+DragonCrushGlitch.Parent = PersonalCategory
+DragonCrushGlitch.BackgroundColor3 = Color3.fromRGB(74, 74, 74)
+DragonCrushGlitch.BorderSizePixel = 0
+DragonCrushGlitch.Position = UDim2.new(0.779999971, 0, 0.671052635, 0)
+DragonCrushGlitch.Size = UDim2.new(0, 150, 0, 30)
+DragonCrushGlitch.Font = Enum.Font.Code
+DragonCrushGlitch.Text = "Dragon Crush Glitch"
+DragonCrushGlitch.TextColor3 = Color3.fromRGB(255, 255, 255)
+			DragonCrushGlitch.TextSize = 14.000
+	DragonCrushGlitch.MouseButton1Down:connect(function()
+		spawn(function()
+			local Player = game:GetService("Players").LocalPlayer
+			local Mouse = Player:GetMouse()
+
+			Mouse.KeyDown:connect(function(Key)
+				Key = Key:lower()
+				if Key == 'r' then
+					local plr = game.Players.LocalPlayer
+					keypress(0x52)
+					wait(0.5)
+					keyrelease(0x52)
+					plr.Character:FindFirstChild'Dragon Crush'.Activator.Throw:Destroy();
+					wait(1)
+					Player.Character.Humanoid.Health = 0
+				end
+			end)
+		end)
+
+		spawn(function()
+			local Player = game:GetService("Players").LocalPlayer
+			local Mouse = Player:GetMouse()
+
+			Mouse.KeyDown:connect(function(Key)
+				Key = Key:lower()
+				if Key == '.' then
+					Player.Character.Humanoid.Health = 0
+				end
+			end)
+		end)
+	end)
 
 VisionCategory.Name = "Vision Category"
 VisionCategory.Parent = Categories
@@ -1727,10 +1960,10 @@ FullBright.Size = UDim2.new(0, 150, 0, 30)
 FullBright.Font = Enum.Font.Code
 FullBright.Text = "Full Bright"
 FullBright.TextColor3 = Color3.fromRGB(255, 255, 255)
-FullBright.TextSize = 14.000
-FullBright.MouseButton1Down:connect(function()
-	game.Lighting.FogEnd = (9999999)
-end)
+	FullBright.TextSize = 14.000
+	FullBright.MouseButton1Down:connect(function()
+		game.Lighting.FogEnd = (9999999)
+	end)
 
 Drugs.Name = "Drugs"
 Drugs.Parent = VisionCategory
@@ -1741,24 +1974,24 @@ Drugs.Size = UDim2.new(0, 150, 0, 30)
 Drugs.Font = Enum.Font.Code
 Drugs.Text = "Drugs"
 Drugs.TextColor3 = Color3.fromRGB(255, 255, 255)
-Drugs.TextSize = 14.000
-Drugs.MouseButton1Down:connect(function()
-	game:GetService("TweenService"):Create(game.Workspace.CurrentCamera, TweenInfo.new(1.1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
-		FieldOfView = 120
-	}):Play()
-	game:GetService("TweenService"):Create(game:GetService("Lighting").ColorCorrection, TweenInfo.new(1.8, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
-		Saturation = 35
-	}):Play()
-	wait(1.1)
-	game:GetService("TweenService"):Create(game.Workspace.CurrentCamera, TweenInfo.new(1.1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
-		FieldOfView = 50
-	}):Play()
-	game:GetService("TweenService"):Create(game:GetService("Lighting").ColorCorrection, TweenInfo.new(1.8, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
-		Saturation = -35
-	}):Play()
-	wait(1.1)
+	Drugs.TextSize = 14.000
+	Drugs.MouseButton1Down:connect(function()
+		game:GetService("TweenService"):Create(game.Workspace.CurrentCamera, TweenInfo.new(1.1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
+			FieldOfView = 120
+		}):Play()
+		game:GetService("TweenService"):Create(game:GetService("Lighting").ColorCorrection, TweenInfo.new(1.8, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
+			Saturation = 35
+		}):Play()
+		wait(1.1)
+		game:GetService("TweenService"):Create(game.Workspace.CurrentCamera, TweenInfo.new(1.1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
+			FieldOfView = 50
+		}):Play()
+		game:GetService("TweenService"):Create(game:GetService("Lighting").ColorCorrection, TweenInfo.new(1.8, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
+			Saturation = -35
+		}):Play()
+		wait(1.1)
 
-end)
+	end)
 
 ShowHitboxes.Name = "Show Hitboxes"
 ShowHitboxes.Parent = VisionCategory
@@ -1769,10 +2002,10 @@ ShowHitboxes.Size = UDim2.new(0, 150, 0, 30)
 ShowHitboxes.Font = Enum.Font.Code
 ShowHitboxes.Text = "Show Hitboxes"
 ShowHitboxes.TextColor3 = Color3.fromRGB(255, 255, 255)
-ShowHitboxes.TextSize = 14.000
-ShowHitboxes.MouseButton1Down:connect(function()
-	settings():GetService("RenderSettings").ShowBoundingBoxes = true
-end)
+	ShowHitboxes.TextSize = 14.000
+	ShowHitboxes.MouseButton1Down:connect(function()
+		settings():GetService("RenderSettings").ShowBoundingBoxes = true
+	end)
 
 FullBrightOff.Name = "Full Bright Off"
 FullBrightOff.Parent = VisionCategory
@@ -1783,10 +2016,10 @@ FullBrightOff.Size = UDim2.new(0, 150, 0, 30)
 FullBrightOff.Font = Enum.Font.Code
 FullBrightOff.Text = "Full Bright Off"
 FullBrightOff.TextColor3 = Color3.fromRGB(255, 255, 255)
-FullBrightOff.TextSize = 14.000
-FullBrightOff.MouseButton1Down:connect(function()
-	game.Lighting.FogEnd = (2000)
-end)
+	FullBrightOff.TextSize = 14.000
+	FullBrightOff.MouseButton1Down:connect(function()
+		game.Lighting.FogEnd = (2000)
+	end)
 
 DrugsOff.Name = "Drugs Off"
 DrugsOff.Parent = VisionCategory
@@ -1797,11 +2030,11 @@ DrugsOff.Size = UDim2.new(0, 150, 0, 30)
 DrugsOff.Font = Enum.Font.Code
 DrugsOff.Text = "Drugs Off"
 DrugsOff.TextColor3 = Color3.fromRGB(255, 255, 255)
-DrugsOff.TextSize = 14.000
-DrugsOff.MouseButton1Down:connect(function()
-	game.Workspace.Camera.FieldOfView = 70
-	game.Lighting.ColorCorrection.Saturation = 0.2
-end)
+	DrugsOff.TextSize = 14.000
+	DrugsOff.MouseButton1Down:connect(function()
+		game.Workspace.Camera.FieldOfView = 70
+		game.Lighting.ColorCorrection.Saturation = 0.2
+	end)
 
 HitboxesOff.Name = "Hitboxes Off"
 HitboxesOff.Parent = VisionCategory
@@ -1812,10 +2045,10 @@ HitboxesOff.Size = UDim2.new(0, 150, 0, 30)
 HitboxesOff.Font = Enum.Font.Code
 HitboxesOff.Text = "Hitboxes Off"
 HitboxesOff.TextColor3 = Color3.fromRGB(255, 255, 255)
-HitboxesOff.TextSize = 14.000
-HitboxesOff.MouseButton1Down:connect(function()
-	settings():GetService("RenderSettings").ShowBoundingBoxes = false
-end)
+	HitboxesOff.TextSize = 14.000
+	HitboxesOff.MouseButton1Down:connect(function()
+		settings():GetService("RenderSettings").ShowBoundingBoxes = false
+	end)
 
 SenzuCategory.Name = "Senzu Category"
 SenzuCategory.Parent = Categories
@@ -1846,88 +2079,88 @@ RedBeans.Size = UDim2.new(0, 150, 0, 30)
 RedBeans.Font = Enum.Font.Code
 RedBeans.Text = "Red Beans"
 RedBeans.TextColor3 = Color3.fromRGB(255, 255, 255)
-RedBeans.TextSize = 14.000
-RedBeans.MouseButton1Down:connect(function()
-	--[_Auto_Buy_Beans_]--
-	--[Version_2.0]--
-	--[By: All4n]--
+	RedBeans.TextSize = 14.000
+	RedBeans.MouseButton1Down:connect(function()
+		--[_Auto_Buy_Beans_]--
+		--[Version_2.0]--
+		--[By: All4n]--
 
-	--[[Use These Lines To Customize Beans/Jars]]--
-	local times = 1 --Change this to how many times you want to buy beans.
-	local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
-	local beantype = "Beans" --Change this to either Jars or Beans.
-	local color = "Red" --Change this to either Red, Blue, Green, or Yellow.
-	--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
+		--[[Use These Lines To Customize Beans/Jars]]--
+		local times = 1 --Change this to how many times you want to buy beans.
+		local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
+		local beantype = "Beans" --Change this to either Jars or Beans.
+		local color = "Red" --Change this to either Red, Blue, Green, or Yellow.
+		--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
 
-	--[Script Starts Here.]--
-	if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
-	for i = 1, times do
-		local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
-		local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
-		local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
-		event:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = beantype
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 = 
-			{
-				[1] = amount
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = color
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "Yes"
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-	end
-end)
+		--[Script Starts Here.]--
+		if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
+		for i = 1, times do
+			local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
+			local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
+			local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
+			event:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = beantype
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 = 
+				{
+					[1] = amount
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = color
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "Yes"
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+		end
+	end)
 
 GreenBeans.Name = "Green Beans"
 GreenBeans.Parent = SenzuCategory
@@ -1938,88 +2171,88 @@ GreenBeans.Size = UDim2.new(0, 150, 0, 30)
 GreenBeans.Font = Enum.Font.Code
 GreenBeans.Text = "Green Beans"
 GreenBeans.TextColor3 = Color3.fromRGB(255, 255, 255)
-GreenBeans.TextSize = 14.000
-GreenBeans.MouseButton1Down:connect(function()
-	--[_Auto_Buy_Beans_]--
-	--[Version_2.0]--
-	--[By: All4n]--
+	GreenBeans.TextSize = 14.000
+	GreenBeans.MouseButton1Down:connect(function()
+		--[_Auto_Buy_Beans_]--
+		--[Version_2.0]--
+		--[By: All4n]--
 
-	--[[Use These Lines To Customize Beans/Jars]]--
-	local times = 1 --Change this to how many times you want to buy beans.
-	local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
-	local beantype = "Beans" --Change this to either Jars or Beans.
-	local color = "Green" --Change this to either Red, Blue, Green, or Yellow.
-	--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
+		--[[Use These Lines To Customize Beans/Jars]]--
+		local times = 1 --Change this to how many times you want to buy beans.
+		local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
+		local beantype = "Beans" --Change this to either Jars or Beans.
+		local color = "Green" --Change this to either Red, Blue, Green, or Yellow.
+		--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
 
-	--[Script Starts Here.]--
-	if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
-	for i = 1, times do
-		local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
-		local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
-		local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
-		event:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = beantype
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 = 
-			{
-				[1] = amount
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = color
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "Yes"
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-	end
-end)
+		--[Script Starts Here.]--
+		if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
+		for i = 1, times do
+			local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
+			local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
+			local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
+			event:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = beantype
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 = 
+				{
+					[1] = amount
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = color
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "Yes"
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+		end
+	end)
 
 YellowBeans.Name = "Yellow Beans"
 YellowBeans.Parent = SenzuCategory
@@ -2030,88 +2263,88 @@ YellowBeans.Size = UDim2.new(0, 150, 0, 30)
 YellowBeans.Font = Enum.Font.Code
 YellowBeans.Text = "Yellow Beans"
 YellowBeans.TextColor3 = Color3.fromRGB(255, 255, 255)
-YellowBeans.TextSize = 14.000
-YellowBeans.MouseButton1Down:connect(function()
-	--[_Auto_Buy_Beans_]--
-	--[Version_2.0]--
-	--[By: All4n]--
+	YellowBeans.TextSize = 14.000
+	YellowBeans.MouseButton1Down:connect(function()
+		--[_Auto_Buy_Beans_]--
+		--[Version_2.0]--
+		--[By: All4n]--
 
-	--[[Use These Lines To Customize Beans/Jars]]--
-	local times = 1 --Change this to how many times you want to buy beans.
-	local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
-	local beantype = "Beans" --Change this to either Jars or Beans.
-	local color = "Yellow" --Change this to either Red, Blue, Green, or Yellow.
-	--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
+		--[[Use These Lines To Customize Beans/Jars]]--
+		local times = 1 --Change this to how many times you want to buy beans.
+		local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
+		local beantype = "Beans" --Change this to either Jars or Beans.
+		local color = "Yellow" --Change this to either Red, Blue, Green, or Yellow.
+		--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
 
-	--[Script Starts Here.]--
-	if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
-	for i = 1, times do
-		local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
-		local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
-		local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
-		event:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = beantype
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 = 
-			{
-				[1] = amount
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = color
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "Yes"
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-	end
-end)
+		--[Script Starts Here.]--
+		if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
+		for i = 1, times do
+			local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
+			local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
+			local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
+			event:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = beantype
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 = 
+				{
+					[1] = amount
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = color
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "Yes"
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+		end
+	end)
 
 BlueBeans.Name = "Blue Beans"
 BlueBeans.Parent = SenzuCategory
@@ -2122,88 +2355,88 @@ BlueBeans.Size = UDim2.new(0, 150, 0, 30)
 BlueBeans.Font = Enum.Font.Code
 BlueBeans.Text = "Blue Beans"
 BlueBeans.TextColor3 = Color3.fromRGB(255, 255, 255)
-BlueBeans.TextSize = 14.000
-BlueBeans.MouseButton1Down:connect(function()
-	--[_Auto_Buy_Beans_]--
-	--[Version_2.0]--
-	--[By: All4n]--
+	BlueBeans.TextSize = 14.000
+	BlueBeans.MouseButton1Down:connect(function()
+		--[_Auto_Buy_Beans_]--
+		--[Version_2.0]--
+		--[By: All4n]--
 
-	--[[Use These Lines To Customize Beans/Jars]]--
-	local times = 1 --Change this to how many times you want to buy beans.
-	local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
-	local beantype = "Beans" --Change this to either Jars or Beans.
-	local color = "Blue" --Change this to either Red, Blue, Green, or Yellow.
-	--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
+		--[[Use These Lines To Customize Beans/Jars]]--
+		local times = 1 --Change this to how many times you want to buy beans.
+		local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
+		local beantype = "Beans" --Change this to either Jars or Beans.
+		local color = "Blue" --Change this to either Red, Blue, Green, or Yellow.
+		--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
 
-	--[Script Starts Here.]--
-	if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
-	for i = 1, times do
-		local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
-		local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
-		local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
-		event:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = beantype
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 = 
-			{
-				[1] = amount
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = color
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "Yes"
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-	end
-end)
+		--[Script Starts Here.]--
+		if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
+		for i = 1, times do
+			local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
+			local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
+			local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
+			event:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = beantype
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 = 
+				{
+					[1] = amount
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = color
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "Yes"
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+		end
+	end)
 
 RedJars.Name = "Red Jars"
 RedJars.Parent = SenzuCategory
@@ -2214,88 +2447,88 @@ RedJars.Size = UDim2.new(0, 150, 0, 30)
 RedJars.Font = Enum.Font.Code
 RedJars.Text = "Red Jars"
 RedJars.TextColor3 = Color3.fromRGB(255, 255, 255)
-RedJars.TextSize = 14.000
-RedJars.MouseButton1Down:connect(function()
-	--[_Auto_Buy_Beans_]--
-	--[Version_2.0]--
-	--[By: All4n]--
+	RedJars.TextSize = 14.000
+	RedJars.MouseButton1Down:connect(function()
+		--[_Auto_Buy_Beans_]--
+		--[Version_2.0]--
+		--[By: All4n]--
 
-	--[[Use These Lines To Customize Beans/Jars]]--
-	local times = 1 --Change this to how many times you want to buy beans.
-	local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
-	local beantype = "Jars" --Change this to either Jars or Beans.
-	local color = "Red" --Change this to either Red, Blue, Green, or Yellow.
-	--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
+		--[[Use These Lines To Customize Beans/Jars]]--
+		local times = 1 --Change this to how many times you want to buy beans.
+		local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
+		local beantype = "Jars" --Change this to either Jars or Beans.
+		local color = "Red" --Change this to either Red, Blue, Green, or Yellow.
+		--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
 
-	--[Script Starts Here.]--
-	if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
-	for i = 1, times do
-		local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
-		local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
-		local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
-		event:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = beantype
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 = 
-			{
-				[1] = amount
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = color
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "Yes"
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-	end
-end)
+		--[Script Starts Here.]--
+		if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
+		for i = 1, times do
+			local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
+			local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
+			local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
+			event:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = beantype
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 = 
+				{
+					[1] = amount
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = color
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "Yes"
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+		end
+	end)
 
 GreenJars.Name = "Green Jars"
 GreenJars.Parent = SenzuCategory
@@ -2306,88 +2539,88 @@ GreenJars.Size = UDim2.new(0, 150, 0, 30)
 GreenJars.Font = Enum.Font.Code
 GreenJars.Text = "Green Jars"
 GreenJars.TextColor3 = Color3.fromRGB(255, 255, 255)
-GreenJars.TextSize = 14.000
-GreenJars.MouseButton1Down:connect(function()
-	--[_Auto_Buy_Beans_]--
-	--[Version_2.0]--
-	--[By: All4n]--
+	GreenJars.TextSize = 14.000
+	GreenJars.MouseButton1Down:connect(function()
+		--[_Auto_Buy_Beans_]--
+		--[Version_2.0]--
+		--[By: All4n]--
 
-	--[[Use These Lines To Customize Beans/Jars]]--
-	local times = 1 --Change this to how many times you want to buy beans.
-	local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
-	local beantype = "Jars" --Change this to either Jars or Beans.
-	local color = "Green" --Change this to either Red, Blue, Green, or Yellow.
-	--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
+		--[[Use These Lines To Customize Beans/Jars]]--
+		local times = 1 --Change this to how many times you want to buy beans.
+		local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
+		local beantype = "Jars" --Change this to either Jars or Beans.
+		local color = "Green" --Change this to either Red, Blue, Green, or Yellow.
+		--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
 
-	--[Script Starts Here.]--
-	if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
-	for i = 1, times do
-		local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
-		local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
-		local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
-		event:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = beantype
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 = 
-			{
-				[1] = amount
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = color
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "Yes"
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-	end
-end)
+		--[Script Starts Here.]--
+		if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
+		for i = 1, times do
+			local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
+			local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
+			local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
+			event:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = beantype
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 = 
+				{
+					[1] = amount
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = color
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "Yes"
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+		end
+	end)
 
 YellowJars.Name = "Yellow Jars"
 YellowJars.Parent = SenzuCategory
@@ -2398,88 +2631,88 @@ YellowJars.Size = UDim2.new(0, 150, 0, 30)
 YellowJars.Font = Enum.Font.Code
 YellowJars.Text = "Yellow Jars"
 YellowJars.TextColor3 = Color3.fromRGB(255, 255, 255)
-YellowJars.TextSize = 14.000
-YellowJars.MouseButton1Down:connect(function()
-	--[_Auto_Buy_Beans_]--
-	--[Version_2.0]--
-	--[By: All4n]--
+	YellowJars.TextSize = 14.000
+	YellowJars.MouseButton1Down:connect(function()
+		--[_Auto_Buy_Beans_]--
+		--[Version_2.0]--
+		--[By: All4n]--
 
-	--[[Use These Lines To Customize Beans/Jars]]--
-	local times = 1 --Change this to how many times you want to buy beans.
-	local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
-	local beantype = "Jars" --Change this to either Jars or Beans.
-	local color = "Yellow" --Change this to either Red, Blue, Green, or Yellow.
-	--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
+		--[[Use These Lines To Customize Beans/Jars]]--
+		local times = 1 --Change this to how many times you want to buy beans.
+		local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
+		local beantype = "Jars" --Change this to either Jars or Beans.
+		local color = "Yellow" --Change this to either Red, Blue, Green, or Yellow.
+		--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
 
-	--[Script Starts Here.]--
-	if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
-	for i = 1, times do
-		local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
-		local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
-		local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
-		event:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = beantype
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 = 
-			{
-				[1] = amount
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = color
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "Yes"
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-	end
-end)
+		--[Script Starts Here.]--
+		if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
+		for i = 1, times do
+			local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
+			local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
+			local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
+			event:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = beantype
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 = 
+				{
+					[1] = amount
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = color
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "Yes"
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+		end
+	end)
 
 BlueJars.Name = "Blue Jars"
 BlueJars.Parent = SenzuCategory
@@ -2490,88 +2723,88 @@ BlueJars.Size = UDim2.new(0, 150, 0, 30)
 BlueJars.Font = Enum.Font.Code
 BlueJars.Text = "Blue Jars"
 BlueJars.TextColor3 = Color3.fromRGB(255, 255, 255)
-BlueJars.TextSize = 14.000
-BlueJars.MouseButton1Down:connect(function()
-	--[_Auto_Buy_Beans_]--
-	--[Version_2.0]--
-	--[By: All4n]--
+	BlueJars.TextSize = 14.000
+	BlueJars.MouseButton1Down:connect(function()
+		--[_Auto_Buy_Beans_]--
+		--[Version_2.0]--
+		--[By: All4n]--
 
-	--[[Use These Lines To Customize Beans/Jars]]--
-	local times = 1 --Change this to how many times you want to buy beans.
-	local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
-	local beantype = "Jars" --Change this to either Jars or Beans.
-	local color = "Blue" --Change this to either Red, Blue, Green, or Yellow.
-	--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
+		--[[Use These Lines To Customize Beans/Jars]]--
+		local times = 1 --Change this to how many times you want to buy beans.
+		local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
+		local beantype = "Jars" --Change this to either Jars or Beans.
+		local color = "Blue" --Change this to either Red, Blue, Green, or Yellow.
+		--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
 
-	--[Script Starts Here.]--
-	if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
-	for i = 1, times do
-		local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
-		local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
-		local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
-		event:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = beantype
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 = 
-			{
-				[1] = amount
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = color
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-		wait(0.3)
-		local A_1 =
-			{
-				[1] = "Yes"
-			}
-		event2:FireServer(A_1)
-		wait(0.5)
-		local A_1 =
-			{
-				[1] = "k"
-			}
-		event2:FireServer(A_1)
-	end
-end)
+		--[Script Starts Here.]--
+		if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
+		for i = 1, times do
+			local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
+			local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
+			local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
+			event:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = beantype
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 = 
+				{
+					[1] = amount
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = color
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "Yes"
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+		end
+	end)
 
 Times.Name = "Times"
 Times.Parent = SenzuCategory
