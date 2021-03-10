@@ -317,5 +317,87 @@ local bpev = lmao.Backpack:WaitForChild'HairScript'.RemoteEvent;
 while wait() do
     bpev:FireServer(hc, "up");
 end;
+elseif cht:match("-mspam") then
+game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Made By";
+        Text = "ItsAll4n";
+        })
+local lplr = game.Players.LocalPlayer
+local mouse = lplr:GetMouse()
+_G.on = false
+on = true
+off = false
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+    Title = "Move Spam";
+    Text = "Press ; to enable/disable.";
+    })
+
+mouse.KeyDown:connect(function(key)
+    if key == ";" then
+        if _G.on == false then
+            _G.on = on
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Spam Enabled";
+                Text = "Press ; to disable.";
+                })
+            while _G.on == true do
+                wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack[Move1])
+game.Players.LocalPlayer.Character[Move1]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack[Move2])
+game.Players.LocalPlayer.Character[Move2]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack[Move3])
+game.Players.LocalPlayer.Character[Move3]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack[Move4])
+game.Players.LocalPlayer.Character[Move4]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack[Move5])
+game.Players.LocalPlayer.Character[Move5]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack[Move6])
+game.Players.LocalPlayer.Character[Move6]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack[Move7])
+game.Players.LocalPlayer.Character[Move7]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack[Move8])
+game.Players.LocalPlayer.Character[Move8]:Activate()
+wait()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game.Players.LocalPlayer.Backpack[Move9])
+game.Players.LocalPlayer.Character[Move9]:Activate()
+wait()
+            end
+        elseif _G.on == true then
+            _G.on = off
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Spam Disabled";
+                Text = "Press ; to enable.";
+                })
+        end
+    end
+end)
+while wait() do
+for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+if v.Name == "Justice Combination" then
+local action = game.Players.LocalPlayer.Character:WaitForChild("Action")
+if action then wait() action:Destroy() end end
+if v.Name == "Attacking" then
+v:Destroy()
+end
+if v.Name == "Action" then
+v:Destroy()
+end
+if v.Name == "Killed" then
+v:Destroy()
+end
+if v.Name == "Block" and v.Value == true then
+v.Value = false
+end
+end
+end
 end
 end)
