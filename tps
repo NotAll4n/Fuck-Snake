@@ -399,5 +399,49 @@ v.Value = false
 end
 end
 end
+elseif cht:match("-rface") then
+game.Players.LocalPlayer.Character.Head.face:Destroy()
+elseif cht:match("-rclothes") then
+local pchar = game:GetService("Players").LocalPlayer.Character -- This bypasses all Anti exploits so do not worry .
+		if pchar:FindFirstChild("Shirt") then
+			pchar.Shirt:Remove()
+		end
+		if pchar:FindFirstChild("Pants") then
+			pchar.Pants:Remove()
+		end
+		if pchar:FindFirstChild("Shirt Graphic") then
+			pchar["Shirt Graphic"].Graphic = ""
+		end
+elseif cht:match("-raura") then
+local plr = game.Players.LocalPlayer
+		game.Workspace.Live[plr.Name].HumanoidRootPart["TempAura"]:Destroy()
+		wait()
+		local plr = game.Players.LocalPlayer
+		game.Workspace.Live[plr.Name].HumanoidRootPart["Lightning"]:Destroy()
+elseif cht:match("-rclothes") then
+local pchar = game:GetService("Players").LocalPlayer.Character -- This bypasses all Anti exploits so do not worry .
+		if pchar:FindFirstChild("Shirt") then
+			pchar.Shirt:Remove()
+		end
+		if pchar:FindFirstChild("Pants") then
+			pchar.Pants:Remove()
+		end
+		if pchar:FindFirstChild("Shirt Graphic") then
+			pchar["Shirt Graphic"].Graphic = ""
+		end
+elseif cht:match("-rlegs") then
+		 game:GetService("Workspace").Live[game.Players.LocalPlayer.Name].LeftFoot:Destroy()
+        game:GetService("Workspace").Live[game.Players.LocalPlayer.Name].LeftLowerLeg:Destroy()
+        game:GetService("Workspace").Live[game.Players.LocalPlayer.Name].LeftUpperLeg:Destroy()
+        game:GetService("Workspace").Live[game.Players.LocalPlayer.Name].RightFoot:Destroy()
+        game:GetService("Workspace").Live[game.Players.LocalPlayer.Name].RightLowerLeg:Destroy()
+        game:GetService("Workspace").Live[game.Players.LocalPlayer.Name].RightUpperLeg:Destroy()
+elseif cht:match("-rarms") then
+	game:GetService("Workspace").Live[game.Players.LocalPlayer.Name].LeftHand:Destroy()
+        game:GetService("Workspace").Live[game.Players.LocalPlayer.Name].LeftLowerArm:Destroy()
+        game:GetService("Workspace").Live[game.Players.LocalPlayer.Name].LeftUpperArm:Destroy()
+        game:GetService("Workspace").Live[game.Players.LocalPlayer.Name].RightHand:Destroy()
+        game:GetService("Workspace").Live[game.Players.LocalPlayer.Name].RightLowerArm:Destroy()
+        game:GetService("Workspace").Live[game.Players.LocalPlayer.Name].RightUpperArm:Destroy()
 end
 end)
