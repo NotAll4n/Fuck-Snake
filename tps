@@ -186,5 +186,136 @@ Player.Chatted:connect(function(cht)
 			end
 		end
 	end
+	elseif cht:match("-rgod") then
+		local evs = game:GetService'Players'.LocalPlayer.Backpack:FindFirstChild'ServerTraits';
+        local hs = workspace:FindFirstChild'FriendlyNPCs':FindFirstChild'Hair Stylist';
+        local delaymsg = 0.3;
+
+        coroutine.wrap(function()
+        local meta = getrawmetatable(game);
+        setreadonly(meta, false);
+        local oldnc = meta.__namecall;
+        
+        meta.__namecall = function(self, ...)
+           if (getfenv(2).script) and (getfenv(2).script.Parent) and (getfenv(2).script.Parent.Name == 'Setup') and (self == game:service'Players'.LocalPlayer.PlayerGui:FindFirstChild'LocalScript') and (getnamecallmethod()                 == 'Destroy') then
+                return true;
+                end;
+                return oldnc(self,...);
+                end;
+
+            local lmao = game:service'Players'.LocalPlayer;
+            local scrip = lmao.PlayerGui:WaitForChild'Setup':WaitForChild'LocalScript';
+            print'wat';
+            wait(3);
+            if (scrip) then
+                for i,v in next, getreg() do --registry table
+                    if (typeof(v) == 'function') and (getfenv(v).script == scrip) then
+                        for ix,vx in next, debug.getconstants(v) do
+                            if (tostring(vx) == 'Lighting') then
+                                debug.setconstant(v, ix, 'Workspace');    
+                            end;
+                            if (tostring(vx) == 'WalkSpeed') then
+                                
+                                debug.setconstant(v, ix, 'HealthDisplayDistance');    
+                            end;
+                            if (tostring(vx) == 'Jump') then
+                            
+                                debug.setconstant(v, ix, 'Archivable');    
+                            end;
+                            if (tostring(vx) == 'AutoRotate') then
+                          
+                                debug.setconstant(v, ix, 'Archivable');    
+                           end;
+                       end;
+                   end;
+              end;
+        end;
+        game:service'Players'.LocalPlayer.Character.HumanoidRootPart.Anchored = false;
+        game:service'Players'.LocalPlayer.PlayerGui.LocalScript.Disabled = false;
+        game:GetService'Players'.LocalPlayer.PlayerGui:WaitForChild'Setup':Destroy();
+        end)();
+
+        evs.ChatStart:FireServer(hs); wait(delaymsg);
+        evs.ChatAdvance:FireServer({'Yes'}); wait(delaymsg);
+        evs.ChatAdvance:FireServer({'k'});
+        --game:GetService'Players'.LocalPlayer.PlayerGui:WaitForChild
+        local hc = game:GetService'Players'.LocalPlayer.Backpack:WaitForChild'HairScript':FindFirstChild('HairColor', true);
+        local bpev = game:GetService'Players'.LocalPlayer.Backpack:WaitForChild'HairScript'.RemoteEvent;
+
+
+
+        while game:GetService'RunService'.RenderStepped:wait() do
+        bpev:FireServer(hc, "up")
+        end;
+        local lmao = game:GetService'Players'.LocalPlayer;
+
+        coroutine.wrap(function()
+        local pg = lmao.PlayerGui;
+        local fnd = table.find;
+        local vld = debug.validlevel;
+       do
+        local meta = getrawmetatable(game);
+        local oldnc = meta.__namecall;
+        setreadonly(meta, false);
+        meta.__namecall = newcclosure(function(self, ...)
+            if (vld(2) == true)  then
+                local caller_sc = getfenv(2).script;
+                if (caller_sc) then
+                    local parent = caller_sc.Parent;
+                    if (parent) and (parent.Name == 'Setup') then
+                        return wait(9e9);
+                    end;
+                end;
+            end;
+            return oldnc(self,...);
+        end);
+        setreadonly(meta, true);
+    end;
+
+    local stp = pg:WaitForChild'Setup';
+    local scrip = stp:FindFirstChild'LocalScript' or stp:WaitForChild'LocalScript';
+    warn'found';
+    wait(3);
+    --[Old Shit Method Dont Run This Twice Because There Will Occur Race Condition]--
+    local replacement = {
+        ['Lighting'] = 'Workspace';
+        ['Walkspeed'] = 'HealthDisplayDistance';
+        ['Jump'] = 'Archivable';
+        ['AutoRotate'] = 'Archivable';
+    };
+    for _,v in next, getreg() do 
+        if (type(v) == 'function') and (getfenv(v).script == scrip) then
+            local cons = getconstants(v);
+            for ix, vx in next, replacement do
+                local vlfnd = fnd(cons, ix);
+                if (vlfnd) then
+                    setconstant(v, vlfnd, vx);
+                end;
+            end;
+        end;
+    end;
+
+    lmao.Character.HumanoidRootPart.Anchored = false;
+    pg.LocalScript.Disabled = false;
+    stp:Destroy();
+    end)();
+
+ do 
+    local evs = game:GetService'Players'.LocalPlayer.Backpack:FindFirstChild'ServerTraits';
+    local hs = workspace:FindFirstChild'FriendlyNPCs':FindFirstChild'Hair Stylist';
+    local delaymsg = 0.3;
+    
+    evs.ChatStart:FireServer(hs);
+    wait(delaymsg);
+    evs.ChatAdvance:FireServer({'Yes'});
+    wait(delaymsg);
+    evs.ChatAdvance:FireServer({'k'});
+    end;
+
+local hc = lmao.Backpack:WaitForChild'HairScript':FindFirstChild('HairColor', true);
+local bpev = lmao.Backpack:WaitForChild'HairScript'.RemoteEvent;
+while wait() do
+    bpev:FireServer(hc, "up");
+end;
 end
 end)
