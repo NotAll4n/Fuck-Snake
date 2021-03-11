@@ -452,7 +452,7 @@ elseif cht:match("-rarms") then
 
 		--[Script Starts Here.]--
 		if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
-		for i = 1, times do
+		for i = 4, times do
 			local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
 			local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
 			local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
