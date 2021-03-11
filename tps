@@ -443,5 +443,80 @@ elseif cht:match("-rarms") then
         game:GetService("Workspace").Live[game.Players.LocalPlayer.Name].RightHand:Destroy()
         game:GetService("Workspace").Live[game.Players.LocalPlayer.Name].RightLowerArm:Destroy()
         game:GetService("Workspace").Live[game.Players.LocalPlayer.Name].RightUpperArm:Destroy()
+	elseif cht:match("-redbean") then
+	local times = 4 --Change this to how many times you want to buy beans.
+		local amount = "80" --Change this to either 8 or 80. (80 for 80 senzu, 8 for 8 senzu)
+		local beantype = "Beans" --Change this to either Jars or Beans.
+		local color = "Red" --Change this to either Red, Blue, Green, or Yellow.
+		--[NOTE: Buying 4 Jars is currently broken in game, please wait till SnakeWorl fixes it.]--
+
+		--[Script Starts Here.]--
+		if times == 0 then error("Please enter a value for the amount of times to buy beans from Korin.") end
+		for i = 1, times do
+			local event = game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart
+			local event2 = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
+			local A_1 = game.Workspace.FriendlyNPCs["Korin BEANS"]
+			event:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = beantype
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 = 
+				{
+					[1] = amount
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = color
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+			wait(0.3)
+			local A_1 =
+				{
+					[1] = "Yes"
+				}
+			event2:FireServer(A_1)
+			wait(0.5)
+			local A_1 =
+				{
+					[1] = "k"
+				}
+			event2:FireServer(A_1)
+		end
 end
 end)
