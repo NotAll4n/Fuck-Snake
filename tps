@@ -518,5 +518,8 @@ elseif cht:match("-rarms") then
 				}
 			event2:FireServer(A_1)
 		end
+		elseif cht:match("-chi") then
+		game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2.0),{CFrame = CFrame.new(-5972.44238, 20.9875011, -4190.5791, -0.998630166, 0, 0.0523243919, 0, 1, -0, -0.0523243919, 0, -0.998630166)}):Play()
+	wait(0)
 end
 end)
