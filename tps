@@ -521,5 +521,10 @@ elseif cht:match("-rarms") then
 		elseif cht:match("-chi") then
 		game.TweenService:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(2.0),{CFrame = CFrame.new(-5972.44238, 20.9875011, -4190.5791, -0.998630166, 0, 0.0523243919, 0, 1, -0, -0.0523243919, 0, -0.998630166)}):Play()
 	wait(0)
-end
+		elseif cht:match("-rev") then
+    local lplr = game:GetService("Players").LocalPlayer
+	local action = lplr.Character.SuperAction
+        action:Destroy()
+	game:GetService("TweenService"):Create(lplr.Character.HumanoidRootPart, TweenInfo.new(0.3, Enum.EasingStyle.Linear), {CFrame = CFrame.new(100, 100, 100)}):Play()
+	end
 end)
