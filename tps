@@ -330,16 +330,16 @@ off = false
 
 game:GetService("StarterGui"):SetCore("SendNotification", {
     Title = "Move Spam";
-    Text = "Press ; to enable/disable.";
+    Text = "Press - to enable/disable.";
     })
 
 mouse.KeyDown:connect(function(key)
-    if key == ";" then
+    if key == "-" then
         if _G.on == false then
             _G.on = on
             game:GetService("StarterGui"):SetCore("SendNotification", {
                 Title = "Spam Enabled";
-                Text = "Press ; to disable.";
+                Text = "Press - to disable.";
                 })
             while _G.on == true do
                 wait()
@@ -375,7 +375,7 @@ wait()
             _G.on = off
             game:GetService("StarterGui"):SetCore("SendNotification", {
                 Title = "Spam Disabled";
-                Text = "Press ; to enable.";
+                Text = "Press - to enable.";
                 })
         end
     end
@@ -526,5 +526,38 @@ elseif cht:match("-rarms") then
 	local action = lplr.Character.SuperAction
         action:Destroy()
 	game:GetService("TweenService"):Create(lplr.Character.HumanoidRootPart, TweenInfo.new(0.3, Enum.EasingStyle.Linear), {CFrame = CFrame.new(100, 100, 100)}):Play()
-	end
+elseif cht:match("-slot1") then
+local Slot = "Slot1" --  t ype like "Slot3", "Slot2", "Slot1" -- 
+local A_1 = { [1] = "k" }
+local A_2 = { [1] = Slot }
+local A_3 = { [1] = "Yes" }
+local pzath = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
+game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart:FireServer(game.Workspace.FriendlyNPCs["Character Slot Changer"]) wait(.3)
+pzath:FireServer(A_3) wait(.3)
+pzath:FireServer(A_1) wait(.3)
+pzath:FireServer(A_2) wait(.3)
+pzath:FireServer(A_1) wait(.3)
+elseif cht:match("-slot2") then
+local Slot = "Slot2" --  t ype like "Slot3", "Slot2", "Slot1" -- 
+local A_1 = { [1] = "k" }
+local A_2 = { [1] = Slot }
+local A_3 = { [1] = "Yes" }
+local pzath = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
+game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart:FireServer(game.Workspace.FriendlyNPCs["Character Slot Changer"]) wait(.3)
+pzath:FireServer(A_3) wait(.3)
+pzath:FireServer(A_1) wait(.3)
+pzath:FireServer(A_2) wait(.3)
+pzath:FireServer(A_1) wait(.3)
+elseif cht:match("-slot3") then
+local Slot = "Slot3" --  t ype like "Slot3", "Slot2", "Slot1" -- 
+local A_1 = { [1] = "k" }
+local A_2 = { [1] = Slot }
+local A_3 = { [1] = "Yes" }
+local pzath = game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance
+game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart:FireServer(game.Workspace.FriendlyNPCs["Character Slot Changer"]) wait(.3)
+pzath:FireServer(A_3) wait(.3)
+pzath:FireServer(A_1) wait(.3)
+pzath:FireServer(A_2) wait(.3)
+pzath:FireServer(A_1) wait(.3)
+end
 end)
