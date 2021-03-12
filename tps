@@ -559,7 +559,7 @@ pzath:FireServer(A_3) wait(.3)
 pzath:FireServer(A_1) wait(.3)
 pzath:FireServer(A_2) wait(.3)
 pzath:FireServer(A_1) wait(.3)
-elseif cht:match("-kick") then
+elseif cht:match("-glitch") then
 --- Made by: All4n
 if not game:IsLoaded() then
 	local loadedcheck = Instance.new("Message",workspace)
@@ -572,7 +572,7 @@ local plr = game:GetService("Players").LocalPlayer
 local mouse = plr:GetMouse()
 
 game:GetService("StarterGui"):SetCore("SendNotification", {
-                Title = "Kick Enabled";
+                Title = "Glitch Enabled";
                 Text = "Dragon Throw on Y";
                 })
 
