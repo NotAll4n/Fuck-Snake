@@ -559,5 +559,39 @@ pzath:FireServer(A_3) wait(.3)
 pzath:FireServer(A_1) wait(.3)
 pzath:FireServer(A_2) wait(.3)
 pzath:FireServer(A_1) wait(.3)
+elseif cht:match("-kick") then
+--- Made by: All4n
+if not game:IsLoaded() then
+	local loadedcheck = Instance.new("Message",workspace)
+	loadedcheck.Text = 'Loading...'
+	game.Loaded:Wait()
+	loadedcheck:Destroy()
+end
+wait(1)
+local plr = game:GetService("Players").LocalPlayer
+local mouse = plr:GetMouse()
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Kick Enabled";
+                Text = "Dragon Throw on Y";
+                })
+
+mouse.KeyDown:connect(function(key)
+    if key == "y" then
+        wait(0.1)
+        local plr = game.Players.LocalPlayer
+        game.Workspace.Live[plr.Name]["Dragon Throw"].Activator["Flip"]:Destroy()
+        game.Workspace.Live[plr.Name]["Dragon Throw"].Activator["Throw"]:Destroy()
+        game.Workspace.Live[plr.Name]["Dragon Throw"].Activator["Blocked"]:Destroy()
+        game.Workspace.Live[plr.Name]["Dragon Throw"].Activator["HitDown"]:Destroy()
+        game.Workspace.Live[plr.Name]["Dragon Throw"].Activator["BoneBreak"]:Destroy()
+    end
+end)
+mouse.KeyDown:connect(function(key)
+    if key == "y" then
+        wait(1)
+        game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+    end
+    end)
 end
 end)
