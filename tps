@@ -19,7 +19,7 @@ Player.Chatted:connect(function(cht)
 	    game:GetService("TeleportService"):Teleport(882399924, game.Players.LocalPlayer)
 	elseif cht:match("-space") then
         game:GetService("TeleportService"):Teleport(478132461, game.Players.LocalPlayer)
-	elseif cht:match("future") then
+	elseif cht:match("-future") then
         game:GetService("TeleportService"):Teleport(569994010, game.Players.LocalPlayer)
 	elseif cht:match("-sw") then
         game:GetService("TeleportService"):Teleport(2046990924, game.Players.LocalPlayer)
