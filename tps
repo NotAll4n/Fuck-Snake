@@ -517,6 +517,7 @@ mouse.KeyDown:Connect(function(key)
     if key == "n" then
         noclip = not noclip
         if not StealthMode then
+	game.Players.LocalPlayer
         end
     end
 end)
