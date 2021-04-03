@@ -514,7 +514,7 @@ local mouse = player:GetMouse()
 
 mouse.KeyDown:Connect(function(key)
     if key == "n" then
-        noclip = true
+        noclip = not noclip
         if not StealthMode then
             Indicator.Text = "Noclip: " .. (noclip and "Enabled" or "Disabled")
         end
