@@ -502,10 +502,10 @@ mouse.KeyDown:connect(function(key)
     end
 end)
 elseif cht:match("-noclip") then
-
 game:GetService("StarterGui"):SetCore("SendNotification", {
-Title = "Toggle";
-Text = "N";})
+                Title = "Toggle";
+                Text = "N";
+                })
 
 local StealthMode = false
 local noclip = true
