@@ -57,6 +57,12 @@ warn'-----Commands-----'
 
 local Player = game.Players.LocalPlayer
 local Char = Live:WaitForChild(game.Players.LocalPlayer.Name)
+local StealthMode = true
+local noclip = true
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+	local mouse = player:GetMouse()
 
 local vu = game:GetService("VirtualUser")
 	game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -512,13 +518,6 @@ elseif cht:match("-noclip") then
 game:GetService("StarterGui"):SetCore("SendNotification", {
 Title = "Toggle";
 Text = "N";})
-
-local StealthMode = true
-local noclip = true
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-
-	local mouse = player:GetMouse()
 
 	mouse.KeyDown:Connect(function(key)
 		if key == "n" then
