@@ -521,7 +521,7 @@ mouse.KeyDown:Connect(function(key)
     end
 end)
 
-while noclip == true do
+while true do
     player = game.Players.LocalPlayer
     character = player.Character
     if noclip then
