@@ -52,6 +52,7 @@ warn'-rev'
 warn'-glitch'
 warn'-fly'
 warn'-noclip'
+warn'hreset'
 warn'-----Basic-----'
 warn'-----Commands-----'
 
