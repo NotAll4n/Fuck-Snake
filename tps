@@ -535,6 +535,24 @@ while true do
     end
     game:GetService("RunService").Stepped:wait()
 end
+elseif cht:match("-hreset") then
+local A_1 = game:GetService("Workspace").FriendlyNPCs["Hair Stylist"]
+local Event = game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatStart
+Event:FireServer(A_1)
+wait(0.3)
+local A_1 = 
+{
+	[1] = "Yes"
+}
+local Event = game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance
+Event:FireServer(A_1)
+local A_1 = 
+{
+	[1] = "Finish"
+}
+local Event = game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance
+Event:FireServer(A_1)
+
 elseif cht:match("-fly") then
     game:GetService("StarterGui"):SetCore("SendNotification", {
 		Title = "Toggle";
