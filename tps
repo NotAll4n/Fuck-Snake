@@ -1,6 +1,3 @@
-Beans = true
-Color = "Blue"
-BeanType = "Jars"
 if not game:IsLoaded() then
 	local loadedcheck = Instance.new("Message",workspace)
 	loadedcheck.Text = 'Loading...'
