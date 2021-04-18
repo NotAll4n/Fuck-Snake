@@ -52,7 +52,8 @@ warn'-rev'
 warn'-glitch'
 warn'-fly'
 warn'-noclip'
-warn'hreset'
+warn'-reset'
+warn'-spawn'
 warn'-----Basic-----'
 warn'-----Commands-----'
 
@@ -448,6 +449,30 @@ local pchar = game:GetService("Players").LocalPlayer.Character -- This bypasses 
 		if pchar:FindFirstChild("Shirt Graphic") then
 			pchar["Shirt Graphic"].Graphic = ""
 		end
+elseif cht:match("-spawn") then
+local Npc = {
+    [1] = workspace.FriendlyNPCs["Hair Stylist"]
+}
+
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatStart:FireServer(unpack(args))
+
+wait(0.3)
+
+local All4n = {
+    [1] = {
+        [1] = "Yes"
+    }
+}
+
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer(unpack(args))
+
+wait(0.9)
+
+local All4n = {
+    [1] = "woah"
+}
+
+game:GetService("Players").LocalPlayer.Backpack.HairScript.RemoteEvent:FireServer(unpack(args))
 elseif cht:match("-raura") then
 local plr = game.Players.LocalPlayer
 		game.Workspace.Live[plr.Name].HumanoidRootPart["TempAura"]:Destroy()
