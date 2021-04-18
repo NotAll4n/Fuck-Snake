@@ -450,7 +450,8 @@ local pchar = game:GetService("Players").LocalPlayer.Character -- This bypasses 
 			pchar["Shirt Graphic"].Graphic = ""
 		end
 elseif cht:match("-spawn") then
-local Npc = {
+
+local args = {
     [1] = workspace.FriendlyNPCs["Hair Stylist"]
 }
 
@@ -458,19 +459,21 @@ game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatStart:FireServe
 
 wait(0.3)
 
-local All4n = {
+local args = {
     [1] = {
         [1] = "Yes"
     }
 }
+wait()
 
 game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer(unpack(args))
 
 wait(0.9)
 
-local All4n = {
+local args = {
     [1] = "woah"
 }
+wait()
 
 game:GetService("Players").LocalPlayer.Backpack.HairScript.RemoteEvent:FireServer(unpack(args))
 elseif cht:match("-raura") then
