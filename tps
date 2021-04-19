@@ -159,7 +159,6 @@ Player.Chatted:connect(function(cht)
 		elseif game.Players.LocalPlayer.Character:FindFirstChild("RealHalo") then
 			game.Players.LocalPlayer.Character.RealHalo:Destroy()
 		end
-	elseif cht:match("-rhair") then
 	elseif cht:match("-bright") then
 	game.Lighting.FogEnd = (9999999)
 	elseif cht:match("-nobright") then
@@ -492,6 +491,7 @@ local args = {
 wait()
 
 game:GetService("Players").LocalPlayer.Backpack.HairScript.RemoteEvent:FireServer(unpack(args))
+
 elseif cht:match("-raura") then
 local plr = game.Players.LocalPlayer
 		game.Workspace.Live[plr.Name].HumanoidRootPart["TempAura"]:Destroy()
@@ -543,7 +543,29 @@ end)
 mouse.KeyDown:connect(function(key)
     if key == "y" then
         wait(1)
-        game:GetService("TeleportService"):Teleport(game.PlaceId, game.Players.LocalPlayer)
+        local args = {
+    [1] = workspace.FriendlyNPCs["Hair Stylist"]
+}
+
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatStart:FireServer(unpack(args))
+
+wait(0.3)
+
+local args = {
+    [1] = {
+        [1] = "Yes"
+    }
+}
+wait()
+
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer(unpack(args))
+
+wait(0.9)
+
+local args = {
+    [1] = "woah"
+}
+wait()
     end
 end)
 elseif cht:match("-noclip") then
