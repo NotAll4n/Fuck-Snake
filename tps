@@ -10,6 +10,11 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
     Text = "F9 To See Cmds";
 })
 
+game:GetService("StarterGui"):SetCore("SendNotification",{
+    Title = "Command GUI";
+    Text = "Toggle: RightCtrl";
+})
+
 warn'-----Commands-----'
 warn'-----Worlds-----'
 warn'-earth'
