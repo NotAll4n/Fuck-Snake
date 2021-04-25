@@ -90,7 +90,6 @@ local vu = game:GetService("VirtualUser")
 		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 	end)
 	
-loadstring(game:HttpGet('https://raw.githubusercontent.com/NotAll4n/Fuck-Snake/main/CommandList'))()
 
 Player.Chatted:connect(function(cht)
 	if cht:match("-earth") then
@@ -707,3 +706,5 @@ Text = "Press = To Use";
 end
 end)
 end
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/NotAll4n/Fuck-Snake/main/Command%20List'))()
